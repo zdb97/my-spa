@@ -14,6 +14,12 @@ module.exports = {
   },
   output: {
     publicPath: "auto",
+    chunkFilename: "[name].[contenthash].js",
+  },
+  optimization: {
+    splitChunks: {
+      chunks: "all",
+    },
   },
   resolve: {
     extensions: [".ts", ".tsx", ".js", ".jsx", ".scss"],

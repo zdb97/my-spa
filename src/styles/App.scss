@@ -19,40 +19,93 @@
   margin-bottom: calc(var(--spacing-unit) * 2);
 
   display: flex;
+  justify-content: space-between;
+  align-items: center;
   flex-wrap: wrap;
-  gap: 10px;
+  gap: var(--spacing-unit);
 
-  a {
-    padding: calc(var(--spacing-unit) * 0.5) var(--spacing-unit);
-    border-radius: var(--border-radius);
-    transition: all var(--transition-speed) ease;
-    margin-right: 20px;
-
-    &:hover {
-      background-color: var(--primary-color);
-      color: white;
-    }
-
-    &.active {
-      background-color: var(--primary-color);
-      color: white;
-    }
-  }
-}
-
-@media (max-width: 600px) {
-  .app-nav {
-    flex-direction: column;
-    gap: 6px;
-    align-items: stretch;
+  .nav-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    flex: 1;
 
     a {
-      width: 100%;
-      text-align: center;
-      font-size: 1rem;
+      padding: calc(var(--spacing-unit) * 0.5) var(--spacing-unit);
+      border-radius: var(--border-radius);
+      transition: all var(--transition-speed) ease;
+      text-decoration: none;
+      color: var(--text-color);
+
+      &:hover {
+        background-color: var(--primary-color);
+        color: white;
+      }
+
+      &.active {
+        background-color: var(--primary-color);
+        color: white;
+      }
+    }
+  }
+
+  .user-section {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-unit);
+    padding: 0 var(--spacing-unit);
+
+    span {
+      color: var(--text-color);
+      font-weight: 500;
+    }
+
+    button {
+      padding: calc(var(--spacing-unit) * 0.5) var(--spacing-unit);
+      border: none;
+      border-radius: var(--border-radius);
+      background-color: var(--primary-color);
+      color: white;
+      cursor: pointer;
+      transition: all var(--transition-speed) ease;
+      outline: none;
+
+      &:active {
+        transform: translateY(0);
+      }
     }
   }
 }
+
+@media (max-width: 768px) {
+  .app-nav {
+    flex-direction: column;
+    align-items: stretch;
+
+    .nav-links {
+      flex-direction: column;
+      width: 100%;
+
+      a {
+        width: 100%;
+        text-align: center;
+        padding: var(--spacing-unit);
+      }
+    }
+
+    .user-section {
+      flex-direction: column;
+      width: 100%;
+      padding: var(--spacing-unit) 0;
+      border-top: 1px solid var(--border-color);
+
+      button {
+        width: 100%;
+      }
+    }
+  }
+}
+
 .content-container {
   background-color: white;
   padding: calc(var(--spacing-unit) * 2);
