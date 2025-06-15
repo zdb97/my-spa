@@ -1,8 +1,7 @@
 export interface User {
   id: number;
   name: string;
-  email: string;
-  role: "admin" | "user";
+  role: string;
 }
 
 export interface Todo {
@@ -14,8 +13,17 @@ export interface Todo {
 
 export interface AppState {
   users: User[];
-  todos: Todo[];
   currentUser: User | null;
-  loading: boolean;
+  todos: Todo[];
+}
+
+export interface FormState {
+  input: string;
+  isValid: boolean;
   error: string | null;
+}
+
+export interface CounterState {
+  value: number;
+  status: "idle" | "loading" | "failed";
 }

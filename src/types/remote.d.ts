@@ -1,4 +1,5 @@
 import { User } from "../store/types";
+import { AppDispatch } from "../store/store";
 
 declare module "remote/RemoteApp" {
   interface RemoteAppProps {
@@ -11,7 +12,7 @@ declare module "remote/RemoteApp" {
       userId: number;
     }>;
     currentUser: User | null;
-    onSetCurrentUser: (user: User | null) => void;
+    dispatch: AppDispatch;
   }
 
   const RemoteApp: React.FC<RemoteAppProps>;

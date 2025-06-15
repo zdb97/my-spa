@@ -1,12 +1,25 @@
 import React from "react";
-import { useAppSelector } from "../store/hooks";
+import { useAppSelector, useAppDispatch } from "../store/hooks";
+import { setCurrentUser, toggleTodo } from "../store/appSlice";
 
 const Store: React.FC = () => {
+  const dispatch = useAppDispatch();
   const { users, todos, currentUser } = useAppSelector((state) => state.app);
+
+  const handleLogin = () => {
+    if (users.length > 0) {
+      dispatch(setCurrentUser(users[0]));
+    }
+  };
+
+  const handleLogout = () => {
+    dispatch(setCurrentUser(null));
+  };
 
   return (
     <div className="store-container">
-      <h1>Store data display</h1>
+      <h1>Store Data Display</h1>
+
       <div className="stats-section">
         <h2>Application Statistics</h2>
         <ul>
@@ -28,6 +41,34 @@ const Store: React.FC = () => {
             ? `Logged in as: ${currentUser.name} (${currentUser.role})`
             : "No user logged in"}
         </p>
+        <button onClick={handleLogin} disabled={!users.length || !!currentUser}>
+          Login
+        </button>
+        <button onClick={handleLogout} disabled={!currentUser}>
+          Logout
+        </button>
+      </div>
+
+      <div className="todos-section">
+        <h2>Todos</h2>
+        <ul>
+          {todos.map((todo) => (
+            <li key={todo.id}>
+              <input
+                type="checkbox"
+                checked={todo.completed}
+                onChange={() => dispatch(toggleTodo(todo.id))}
+              />
+              <span
+                style={{
+                  textDecoration: todo.completed ? "line-through" : "none",
+                }}
+              >
+                {todo.title}
+              </span>
+            </li>
+          ))}
+        </ul>
       </div>
     </div>
   );

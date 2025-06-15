@@ -7,7 +7,7 @@ import {
   useNavigate,
 } from "react-router-dom";
 import { Provider } from "react-redux";
-import { store } from "./store/store";
+import { store } from "./store/sharedStore";
 import Store from "./components/Store";
 import "./styles/normalize.scss";
 import "./styles/App.scss";

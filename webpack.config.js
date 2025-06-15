@@ -58,6 +58,21 @@ module.exports = {
           eager: true,
           requiredVersion: "^18.2.0",
         },
+        "@reduxjs/toolkit": {
+          singleton: true,
+          eager: true,
+          requiredVersion: "^2.0.0",
+        },
+        "react-redux": {
+          singleton: true,
+          eager: true,
+          requiredVersion: "^9.0.0",
+        },
+        redux: {
+          singleton: true,
+          eager: true,
+          requiredVersion: "^5.0.0",
+        },
       },
     }),
     new HtmlWebpackPlugin({
